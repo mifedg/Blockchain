@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="{{ url_for('index')}}" method="POST">
+  <div class="mb-3">
+    <label for="exampleInputLender" class="form-label">Владелец</label>
+    <input type="text" class="form-control" id="exampleInputLender" placeholder="Имя" name="lender" value="{{
+      request.form.get('lender', '')}}">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Ключ</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ключ" name="key" value="{{
+    request.form.get('key', '')}}">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword2" class="form-label">Номер</label>
+    <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Номер" name="num" value="{{
+    request.form.get('num', '')}}">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Добавить блок</button>
+</form>
+{% endblock %}
+{% block checking %}
+  {% for res in ch_res %}
+    <div class="result">
+      block {{ res['block']}}: {{res['result']}}
+    </div>
+  {% endfor %}
+{% endblock %}
